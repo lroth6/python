@@ -1,0 +1,18 @@
+# Simulated figure showing effect of IPC on oligo peaks
+
+# Retention time range (x-axis)
+x = np.linspace(0, 10, 500)
+
+# Define Gaussian peaks
+def gaussian(x, mu, sigma, height):
+    return height * np.exp(-(x - mu)**2 / (2 * sigma**2))
+
+# Without IPC: early, unresolved peaks
+no_ipc = (gaussian(x, 1.5, 0.3, 1) + 
+          gaussian(x, 2.2, 0.3, 0.8) + 
+          gaussian(x, 3.0, 0.3, 0.6))
+
+# With IPC: later, better-resolved peaks
+ipc = (gaussian(x, 5.0, 0.3, 1) + 
+       gaussian(x, 6.0, 0.3, 0.8) + 
+       gaussian(x, 7.2, 0.3, 0.6))
